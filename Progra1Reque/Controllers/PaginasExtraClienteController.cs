@@ -6,15 +6,14 @@ using System.Web.Mvc;
 
 namespace Progra1Reque.Controllers
 {
-    public class PaginaPrincipalController : Controller
+    public class PaginasExtraClienteController : Controller
     {
-        // GET: PaginaPrincipalCliente
-        public ActionResult PrincipalCliente()
+        // GET: PaginasExtraCliente
+        public ActionResult Carrito()
         {
             return View();
         }
-        // GET: PaginaPrincipalAdministrador
-        public ActionResult PrincipalAdministrador()
+        public ActionResult Facturas()
         {
             return View();
         }

@@ -1,9 +1,8 @@
-﻿
-@{
-   
-}
+﻿@{
 
+}
 <center><h2>WebBaratico</h2></center>
+<a href='@Url.Action("CrearAdministrador", "PaginasExtraAdministrador")'>Crear cuenta de Administrador</a>
 <br>
 <div class="container">
     <div class="row">
@@ -18,22 +17,28 @@
             </form>
         </div>
         <div class="col-xs-4">
-            <button style="background-color:white;border:0px;" onClick = "location.href = '@Url.Action("Carrito", "PaginasExtraCliente")';">
-                <img src="~/images/carrito.png" width="30" />
-                Carrito
-            </button>
             <br />
             <button style="background-color:white;border:0px;">
                 <img src="~/images/facturas.png" width="30" />
-                Facturas
+                Facturas Cliente
             </button>
             <br />
             <button style="background-color:white;border:0px;">
                 <img src="~/images/mensajes.png" width="30" />
-                Mensajería con Administrador
+                Mensajería con Cliente
             </button>
             <br />
-            <button style = "background-color:white;border:0px;" onClick = "location.href = '@Url.Action("Index", "Login")';">
+            <button style="background-color:white;border:0px;">
+                <img src="~/images/modificar.jpeg" width="30" />
+                Modificar Cliente
+            </button>
+            <br />
+            <button style="background-color:white;border:0px;">
+                <img src="~/images/administrar.jpeg" width="30" />
+                Administrar Cliente
+            </button>
+            <br />
+            <button style="background-color:white;border:0px;" onClick = "location.href = '@Url.Action("Index", "Login")';">
                 <img src="~/images/salir.jpeg" width="30" />
                 Salir
             </button>

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Crear una cuenta Administrador";
+}
+
+<center>
+    <h2>Crear Administrador</h2>
+    <form>
+        <input type="text" name="nombre" placeholder="Nombre" size="10">
+        <input type="text" name="apellidos" placeholder="Apellidos" size="10">
+        <br /><br />
+        <input type="text" name="usuario" placeholder="Usuario" size="25">
+        <br><br>
+        <input type="text" name="contraseña" placeholder="Contraseña" size="25"><br><br>
+        <label style="color:white;">label consume e</label>
+        <input type="submit" value="Crear Cuenta">
+    </form>
+</center>
+<br><br><br><br>
+<button onClick="location.href = '@Url.Action("PrincipalAdministrador", "PaginaPrincipal")';">
+    Volver a la página principal
+</button>
+

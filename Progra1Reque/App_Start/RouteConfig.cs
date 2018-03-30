@@ -17,8 +17,9 @@ namespace Progra1Reque
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
-                //defaults: new { controller = "PaginaPrincipal", action = "PrincipalCliente", id = UrlParameter.Optional }
+                //defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "PaginaPrincipal", action = "PrincipalCliente", id = UrlParameter.Optional }
+                //defaults: new { controller = "PaginasExtraAdministrador", action = "CrearAdministrador", id = UrlParameter.Optional }
             );
         }
     }
