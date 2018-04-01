@@ -1,0 +1,42 @@
+﻿
+@{   
+}
+
+<center><h2></h2></center>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4">
+            <h3>Ofertas</h3>
+        </div>
+        <div class="col-xs-4">
+            <h3>Buscar un producto</h3>
+            <form>
+                <input type="text" name="producto" placeholder="Nombre del producto">
+                <input type="submit" value="Buscar">
+            </form>
+        </div>
+        <div class="col-xs-4">
+            <button style="background-color:white;border:0px;" onClick = "location.href = '@Url.Action("Carrito", "PaginasExtraCliente")';">
+                <img src="~/Content/Images/carrito.png" width="30" />
+                Carrito
+            </button>
+            <br />
+            <button style="background-color:white;border:0px;">
+                <img src="~/Content/Images/facturas.png" width="30" />
+                Facturas
+            </button>
+            <br />
+            <button style="background-color:white;border:0px;">
+                <img src="~/Content/Images/mensajes.png" width="30" />
+                Mensajería con Administrador
+            </button>
+            <br />
+            <button style = "background-color:white;border:0px;" onClick = "location.href = '@Url.Action("Index", "Login")';">
+                <img src="~/Content/Images/salir.png" width="30" />
+                Salir
+            </button>
+            <h3>Categorías de productos</h3>
+        </div>
+    </div>
+</div>

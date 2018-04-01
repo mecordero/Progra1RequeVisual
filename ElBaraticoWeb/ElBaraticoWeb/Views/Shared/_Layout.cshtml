@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title WebBaratico</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+@if (@Session["cliente"] != null)
+{                
+                @Html.ActionLink("WebBaratico", "PrincipalCliente", "PaginaPrincipal", new { area = "" }, new { @class = "navbar-brand" })
+}
+else if (@Session["admin"] != null)
+{ @Html.ActionLink("WebBaratico", "PrincipalAdministrador", "PaginaPrincipal", new { area = "" }, new { @class = "navbar-brand" })
+}
+else
+{
+    @Html.ActionLink("WebBaratico", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
+}
+            </div>
+            <div class="navbar-collapse collapse">
+                @if (@Session["cliente"] != null)
+                {
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Inicio", "PrincipalCliente", "PaginaPrincipal")</li>
+                        <li>@Html.ActionLink("Carrito", "About", "Home")</li>
+                        <li>@Html.ActionLink("Facturas", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Soporte", "Contact", "Home")</li>                        
+                    </ul>
+                }
+                else if (@Session["admin"] != null)
+                { 
+                  <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "PrincipalAdministrador", "PaginaPrincipal")</li>
+                    <li>@Html.ActionLink("Soporte", "About", "Home")</li>
+                    <li>@Html.ActionLink("Reportes", "About", "Home")</li>
+                    <li>@Html.ActionLink("Ofertas", "Contact", "Home")</li>
+                  </ul>
+                }                
+                
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - WebBaratico</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
