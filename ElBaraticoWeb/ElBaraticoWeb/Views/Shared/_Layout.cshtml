@@ -18,7 +18,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
+                <img src="~/Content/Images/logo.png" width="30" class="img-menu" />
 @if (@Session["cliente"] != null)
 {                
                 @Html.ActionLink("WebBaratico", "PrincipalCliente", "PaginaPrincipal", new { area = "" }, new { @class = "navbar-brand" })
@@ -36,8 +36,11 @@ else
                 {
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Inicio", "PrincipalCliente", "PaginaPrincipal")</li>
-                        <li>@Html.ActionLink("Carrito", "About", "Home")</li>
+                        <li><img src="~/Content/Images/carrito.png" width="30" class="img-menu" /></li>
+                        <li>@Html.ActionLink("Carrito", "Carrito", "PaginasExtraCliente")</li>
+                        <li><img src="~/Content/Images/facturas.png" width="30" class="img-menu" /></li>
                         <li>@Html.ActionLink("Facturas", "Contact", "Home")</li>
+                        <li><img src="~/Content/Images/mensajes.png" width="30" class="img-menu" /></li>
                         <li>@Html.ActionLink("Soporte", "Contact", "Home")</li>                        
                     </ul>
                 }
@@ -45,9 +48,14 @@ else
                 { 
                   <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Inicio", "PrincipalAdministrador", "PaginaPrincipal")</li>
+                      <li><img src="~/Content/Images/mensajes.png" width="30" class="img-menu" /></li>
                     <li>@Html.ActionLink("Soporte", "About", "Home")</li>
+                      <li><img src="~/Content/Images/facturas.png" width="30" class="img-menu" /></li>
                     <li>@Html.ActionLink("Reportes", "About", "Home")</li>
-                    <li>@Html.ActionLink("Ofertas", "Contact", "Home")</li>
+                      <li><img src="~/Content/Images/ofertas.png" width="30" class="img-menu" /></li>
+                    <li>@Html.ActionLink("Administrar Ofertas/Productos", "Contact", "Home")</li>
+                      <li><img src="~/Content/Images/modificar.png" width="30" class="img-menu" /></li>
+                    <li>@Html.ActionLink("Administrar Usuario", "Contact", "Home")</li>
                   </ul>
                 }                
                 

@@ -56,7 +56,7 @@ namespace ElBaraticoWeb.Models
             using (con)
             {
 
-                SqlCommand cmd = new SqlCommand("Exec Obtener_Cliente '" + id + "'",con);
+                SqlCommand cmd = new SqlCommand("Exec Obtener_Cliente '" + id + "'", con);
 
                 SqlDataReader rd = cmd.ExecuteReader();
 
@@ -100,6 +100,141 @@ namespace ElBaraticoWeb.Models
             }
             return admin;
         }
+
+        public String BuscarUsuario(String logusuario)
+        {
+            //Verifica que connectionString exista en Web.config
+            ConnectionStringSettings mySetting = ConfigurationManager.ConnectionStrings["WebBaraticoDBContext"];
+            if (mySetting == null || string.IsNullOrEmpty(mySetting.ConnectionString))
+                throw new Exception("Error Fatal: el string de conexión no existe en el archivo web.config");
+            con.ConnectionString = mySetting.ConnectionString;
+
+            String usuario = null;
+
+            con.Open();
+            using (con)
+            {
+
+                SqlCommand cmd = new SqlCommand("Exec Verificacion_LogIn '" + logusuario + "'", con);
+
+                SqlDataReader rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+                    usuario = rd.GetSqlValue(0).ToString().Trim();
+                }
+
+            }
+            return usuario;
+        }
+
+        public String RegistrarUsuario(String regNombre, String regApellidos, String regCorreo, String regUsuario, String regContraseña)
+        {
+            //Verifica que connectionString exista en Web.config
+            ConnectionStringSettings mySetting = ConfigurationManager.ConnectionStrings["WebBaraticoDBContext"];
+            if (mySetting == null || string.IsNullOrEmpty(mySetting.ConnectionString))
+                throw new Exception("Error Fatal: el string de conexión no existe en el archivo web.config");
+            con.ConnectionString = mySetting.ConnectionString;
+
+            String resultado = null;
+
+            con.Open();
+            using (con)
+            {
+
+                SqlCommand cmd = new SqlCommand("Exec Registrar_Cliente '" + regNombre + "', '" + regApellidos + "', '" + regCorreo + "', '" + regUsuario + "', '" + regContraseña + "'", con);
+                try
+                {
+                    SqlDataReader rd = cmd.ExecuteReader();
+
+                    while (rd.Read())
+                    {
+                        resultado = rd.GetSqlValue(0).ToString().Trim();
+                    }
+                }
+                catch
+                {
+                    return "Error al insertar el cliente en la BD";
+                }
+            }
+            return resultado;
+        }
+
+        public List<Producto> ObtenerProductos()
+        {
+            //Verifica que connectionString exista en Web.config
+            ConnectionStringSettings mySetting = ConfigurationManager.ConnectionStrings["WebBaraticoDBContext"];
+            if (mySetting == null || string.IsNullOrEmpty(mySetting.ConnectionString))
+                throw new Exception("Error Fatal: el string de conexión no existe en el archivo web.config");
+            
+            List<Producto> productos = new List<Producto>();
+            List<Categoria> categorias = ObtenerCategorias();
+
+            con.ConnectionString = mySetting.ConnectionString;
+
+            con.Open();
+            using (con)
+            {
+
+                SqlCommand cmd = new SqlCommand("Exec Obtener_Productos", con);
+
+                SqlDataReader rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+                    Producto producto = new Producto();
+                    producto.id = rd.GetInt32(0);
+                    producto.nombre = rd.GetSqlValue(1).ToString();
+                    producto.categoria = ObtenerCategoriasProducto(categorias, rd.GetInt32(2));
+                    producto.CantidadVendida = rd.GetInt32(3);
+                    producto.Precio = rd.GetInt32(4);
+                    producto.CalificacionPromedio = rd.GetInt32(5);
+
+                    productos.Add(producto);
+                }
+
+            }
+            return productos;
+        }
+
+        public Categoria ObtenerCategoriasProducto(List<Categoria> categorias, int id)
+        {
+            foreach (Categoria cat in categorias)
+            {
+                if (cat.id == id)
+                    return cat;
+            }
+            return null;
+        }
+
+        public List<Categoria> ObtenerCategorias()
+        {
+            //Verifica que connectionString exista en Web.config
+            ConnectionStringSettings mySetting = ConfigurationManager.ConnectionStrings["WebBaraticoDBContext"];
+            if (mySetting == null || string.IsNullOrEmpty(mySetting.ConnectionString))
+                throw new Exception("Error Fatal: el string de conexión no existe en el archivo web.config");
+            con.ConnectionString = mySetting.ConnectionString;
+
+            List<Categoria> categorias = new List<Categoria>();
+
+            con.Open();
+            using (con)
+            {
+
+                SqlCommand cmd = new SqlCommand("Exec Obtener_Categorias", con);
+
+                SqlDataReader rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+                    Categoria cat = new Categoria();
+                    cat.id = rd.GetInt32(0);
+                    cat.nombre = rd.GetSqlValue(1).ToString();
+
+                    categorias.Add(cat);
+                }
+                return categorias;
+            }
+        }
     }
 }
-    

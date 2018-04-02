@@ -23,10 +23,11 @@ else if (@Session["admin"] != null)
         @*@Html.AntiForgeryToken()*@
 
         <ul class="nav navbar-nav navbar-right">
+            <li><img src="~/Content/Images/modificar.png" width="30" class="img-menu" /></li>
             <li>
                 @Html.ActionLink("Hola " + admin.nombre + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión <img src="~/Content/Images/salir.png" width="30" /></a></li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
             <li> <img src="~/Content/Images/salir.png" width="30" class="img-menu" onclick="javascript:document.getElementById('logoutForm').submit()" /> </li>
         </ul>
     }

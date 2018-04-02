@@ -169,9 +169,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ManejoDatosBDModels.cs" />
+    <Compile Include="Models\PaginaPrincipalClienteModel.cs" />
     <Compile Include="Models\Producto.cs" />
     <Compile Include="Models\UsuariosModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -183,6 +185,7 @@
     <Content Include="Content\Images\carrito.png" />
     <Content Include="Content\Images\enviarmsg.png" />
     <Content Include="Content\Images\facturas.png" />
+    <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\mensajes.png" />
     <Content Include="Content\Images\modificar.png" />
     <Content Include="Content\Images\salir.png" />
@@ -246,6 +249,7 @@
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\PaginaPrincipal\VerProducto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
